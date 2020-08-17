@@ -11,9 +11,11 @@ const styles = {
 
     telaLoginInput: {
         height: 40, 
+        maxWidth: 400,
         borderColor: 'gray', 
         borderWidth: 1,
         alignItems: 'center',
+        justifyContent: 'center',
         marginVertical: 10,
         borderRadius: 20,
         paddingHorizontal: 15,
@@ -25,6 +27,7 @@ const styles = {
         backgroundColor: "#DDDDDD",
         padding: 10,
         marginTop: 10,
+        maxWidth: 400,
         borderRadius: 20,
     },
 
@@ -53,7 +56,8 @@ const styles = {
     },
 
     telaHomeItensTitle: {
-        marginLeft: 10,
+        marginHorizontal: 10,
+        textAlign: 'justify',
         fontSize: 18,
         fontWeight: 'bold',
         justifyContent: 'center'
