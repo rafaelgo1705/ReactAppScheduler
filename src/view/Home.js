@@ -1,24 +1,10 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, Image, FlatList, Alert } from 'react-native';
+import { Text, View, TouchableOpacity, Image, FlatList, Alert, AsyncStorage } from 'react-native';
 
 import axios from 'axios';
+import api from '../services/api';
 
 import styles from '../utility/styles';
-
-const DATA = [
-  {
-    id: '1',
-    title: 'Fazer bolo',
-  },
-  {
-    id: '2',
-    title: 'Relaxar',
-  },
-  {
-    id: '3',
-    title: 'Descansar',
-  },
-];
 
 export default class Home extends React.Component {
     constructor(props){
@@ -30,22 +16,18 @@ export default class Home extends React.Component {
     }
 
     componentDidMount = async () => {
-      /*const token = await AsyncStorage.getItem('token').then((value) => {
-        console.log(value);
-      });*/
-
       const headers = {
-          'Authorization': 'BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjYsImlhdCI6MTU5NzQ1OTI1OX0.v9EwfoLou2jvVwU2E2Bn_pqsKdP3SgAL-jC8edRaFpg'
+        'Authorization': 'Bearer' + await AsyncStorage.getItem('token')
       }
       
-      await axios.get('http://192.168.0.100:3333/tweets', {
+      await axios.get(api()+'/agenda', {
         headers: headers
       })
       .then(res => {
         const nameList = res.data;
         this.setState({ nameList });
         
-      })
+      });
     }
 
     abrirTelaLogin = () => {
