@@ -12,11 +12,30 @@ export default class Login extends React.Component {
     }
     
     login = async () => {
-      this.openHomeScreen();
+      try{
+        const credentials = {
+          email: this.state.email,
+          password: this.state.password
+        }
+
+        const response = await api.post("/authenticate", credentials)
+
+        //console.log(response.data)
+
+        const user = response.data
+
+        await this.saveUserAuth(user)
+
+        this.openHomeScreen()
+
+      } catch(err){
+        console.log(err)
+
+      }
     }
 
     saveUserAuth = async (user) => {
-
+      await AsyncStorage.setItem('@token', JSON.stringify(user))
     }
 
     openHomeScreen = () => {

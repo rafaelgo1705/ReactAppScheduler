@@ -13,7 +13,18 @@ export default class Home extends React.Component {
       }
 
     componentDidMount = async () => {
-      
+      try{
+        const response = await api.get('/schedule');
+
+        this.setState({
+          nameList: response.data
+        })
+
+        console.log(response.data)
+
+      } catch(error){
+        //console.log(error)
+      }
     }
 
     openScreenRegisterSchedule = () => {
