@@ -2,14 +2,14 @@ import colors from './colors';
 
 const styles = {
     //Tela de Login
-    telaLogin: {
+    screenLogin: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'stretch',
         marginHorizontal: 10,
     },
 
-    telaLoginInput: {
+    screenLoginInput: {
         height: 40, 
         maxWidth: 400,
         borderColor: 'gray', 
@@ -22,7 +22,7 @@ const styles = {
         paddingVertical: 10
     },
 
-    telaLoginButton: {
+    screenLoginButton: {
         alignItems: "center",
         backgroundColor: "#DDDDDD",
         padding: 10,
@@ -31,7 +31,7 @@ const styles = {
         borderRadius: 20,
     },
 
-    logoTelaLogin: {
+    screenLoginImage: {
         width: 100,
         height: 100,
         margin: 10,
@@ -40,14 +40,14 @@ const styles = {
 
     //Fim tela de Login
     //Tela Home
-    telaHome: {
+    screenHome: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'stretch',
         
     },
 
-    telaHomeButton: {
+    screenHomeButton: {
         alignItems: "center",
         backgroundColor: "#DDDDDD",
         padding: 10,
@@ -55,7 +55,7 @@ const styles = {
         borderRadius: 20,
     },
 
-    telaHomeItensTitle: {
+    screenHomeItemsTitle: {
         marginHorizontal: 10,
         textAlign: 'justify',
         fontSize: 18,
@@ -63,7 +63,7 @@ const styles = {
         justifyContent: 'center'
     },
 
-    telaHomeItensArray: {
+    screenHomeItemsArray: {
         borderBottomWidth: 0.5,
         borderColor: colors.corSelecionado,
         padding: 12,
