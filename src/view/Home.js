@@ -13,18 +13,42 @@ export default class Home extends React.Component {
       }
 
     componentDidMount = async () => {
-      try{
-        const response = await api.get('/schedule');
+      this.getdata();
+    }
 
-        this.setState({
-          nameList: response.data
+    getdata = async () => {
+        this.setState({ nameList: []})
+        const header = await AsyncStorage.getItem('@token')
+
+        await api.get('/schedule', {
+          headers:header,
+          validateStatus: function (status){
+            return status < 500
+          }   
+        })
+        .then((response) => {
+          console.log(response);
+
+        }).catch((error) => {
+          console.log(error)
         })
 
-        console.log(response.data)
+        /*const response = await api.get('/schedule', {
+          headers:header
+        })
+        .then((response) => {
+          return response.data;
 
-      } catch(error){
-        //console.log(error)
-      }
+        }).catch((error) => {
+          return error.toJSON()
+        })*/
+
+        /*this.setState({
+          nameList: response.data
+        })*/
+
+        //console.log(response)
+        
     }
 
     openScreenRegisterSchedule = () => {

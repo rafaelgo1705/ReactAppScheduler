@@ -21,7 +21,16 @@ api.interceptors.request.use( async (config) => {
     return config
 
   } catch (error){
-    console.log(error)
+    return Promise.reject(error)
+  }
+})
+
+api.interceptors.response.use( async (config) => {
+  try{
+    return config
+    
+  } catch (error){
+    return Promise.reject(error)
   }
 })
 

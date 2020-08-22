@@ -19,9 +19,6 @@ export default class Login extends React.Component {
         }
 
         const response = await api.post("/authenticate", credentials)
-
-        //console.log(response.data)
-
         const user = response.data
 
         await this.saveUserAuth(user)
@@ -32,6 +29,7 @@ export default class Login extends React.Component {
         console.log(err)
 
       }
+      
     }
 
     saveUserAuth = async (user) => {

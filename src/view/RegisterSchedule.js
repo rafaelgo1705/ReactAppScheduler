@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Image, Alert, AsyncStorage } from 'react-native';
 
 import styles from '../utility/styles';
 
@@ -37,10 +37,28 @@ export default class RegisterSchedule extends React.Component {
     }
 
     register = async () => {
-      if(this.validate()){
+      //if(this.validate()){
         
-        this.return();
-      }
+        const token = await AsyncStorage.getItem("@token")
+
+        const headers= {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer'+token 
+        };
+
+        const data = {
+          name: this.state.name,
+          date: this.state.date,
+          hour: this.state.hour
+        }
+        
+        await api.post("/schedule", data, {
+          headers:headers
+        } 
+        ).then((response) => {
+          console.log(response.data)
+        })
+      //}
         
     }
 

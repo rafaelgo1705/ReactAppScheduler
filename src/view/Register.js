@@ -10,11 +10,29 @@ export default class Register extends React.Component {
       name: "",
       username: "",
       email: "",
-      password: ""
+      password: "",
     }
 
     register = async () => {
-        
+      const data = {
+        name: this.state.name,
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password
+      }
+
+      await api.post('/register', {
+        ...data
+      })
+      .then((response) => {
+        let error = ""
+        for (let msg of response.data) {
+          error += msg.message + "\n" 
+        }
+
+        Alert.alert("Atenção", error)
+      })
+
     }
 
     return = () => {
