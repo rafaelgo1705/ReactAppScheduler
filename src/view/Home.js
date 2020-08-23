@@ -46,8 +46,8 @@ export default class Home extends React.Component {
     this.props.navigation.navigate('RegisterSchedule');
   }
 
-  openScreenLogin = () => {
-    this.props.navigation.navigate('Login');
+  openScreenLogin = async () => {
+    await AsyncStorage.clear()
   }
 
   render() {

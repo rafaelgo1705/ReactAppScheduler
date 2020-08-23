@@ -11,7 +11,7 @@ export default class LoadScreen extends React.Component {
   componentDidMount = async () => {
     const token = await AsyncStorage.getItem('@token')
 
-    this.props.navigation.navigate(token ? 'Home' : 'Login');
+    this.props.navigation.navigate(token ? 'TabsScreen' : 'StackSig');
   }
 
   render(){

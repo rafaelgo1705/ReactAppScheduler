@@ -14,7 +14,7 @@ export default class Login extends React.Component {
       password: ""
     }
   }
-  
+
   login = async () => {
     const credentials = {
       email: this.state.email,
@@ -36,7 +36,7 @@ export default class Login extends React.Component {
   }
 
   openHomeScreen = () => {
-    this.props.navigation.navigate('Home');
+    this.props.navigation.navigate('TabsScreen');
   }
 
   openRegisterScreen = () => {
