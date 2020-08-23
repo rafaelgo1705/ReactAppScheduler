@@ -67,6 +67,12 @@ export default class Home extends React.Component {
     this.props.navigation.navigate('RegisterSchedule', { onStateRegister: this.onStateRegister });
   }
 
+  openScreenUpdateSchedule = (item) => {
+    this.props.navigation.navigate('UpdateSchedule', {
+      idActivity: item.id
+    });
+  }
+
   render() {
     return (
       <View style={styles.screenHome}> 
@@ -99,7 +105,7 @@ export default class Home extends React.Component {
                 return (
                   <TouchableOpacity
                     onPress={
-                      () => {}}
+                      () => { this.openScreenUpdateSchedule(item) }}
                     onLongPress={
                     () => {this.setState({
                       showAlert: !this.state.showAlert,

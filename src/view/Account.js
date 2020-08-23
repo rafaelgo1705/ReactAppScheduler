@@ -25,33 +25,30 @@ export default class Account extends React.Component {
   render() {
     return (
       <View style={{flex:1, alignItems: "center"}}>
-      <View style={{flex:1, alignItems: "center", justifyContent: "center"}}> 
-        <View style={{alignItems:'center'}}>
-          <Image
-            style={styles.screenLoginImage}
-            source={require('../utility/img/imgLogin.png')}
-          />
+        <View style={{flex:1, alignItems: "center", justifyContent: "center"}}> 
+          <View style={{alignItems:'center'}}>
+            <Image
+              style={styles.screenLoginImage}
+              source={require('../utility/img/imgLogin.png')}
+            />
+          </View>
+          <Text style={styles.screenAccountItemsTitleText}>Rafael Gomes</Text>
+          <Text style={styles.screenAccountItemsTitleTextInfo}>rr147440@gmail.com</Text>
+          <Text style={styles.screenAccountItemsTitleTextInfo}>rafaelgo</Text>
+          
+          <TouchableOpacity
+            style={styles.screenAccountButton}
+            onPress={()=>{this.logOut()}}>
+            <Text>Sair</Text>
+          </TouchableOpacity>
+
+          
         </View>
-        <Text style={styles.screenAccountItemsTitleText}>Rafael Gomes</Text>
-        <Text style={styles.screenAccountItemsTitleTextInfo}>rr147440@gmail.com</Text>
-        <Text style={styles.screenAccountItemsTitleTextInfo}>rafaelgo</Text>
-        
-        <TouchableOpacity
-          style={styles.screenAccountButton}
-          onPress={()=>{this.logOut()}}>
-          <Text>Sair</Text>
-        </TouchableOpacity>
-
-        
-      </View>
-      <View>
-
-      </View>
-      <TouchableOpacity
-          style={styles.screenAccountButtonDelete}
-          onPress={()=>{this.deleteAccount()}}>
-          <Text style={styles.screenAccountButtonText}>Apagar Conta</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.screenAccountButtonDelete}
+            onPress={()=>{this.deleteAccount()}}>
+            <Text style={styles.screenAccountButtonText}>Apagar Conta</Text>
+          </TouchableOpacity>
       </View>
     );
   }

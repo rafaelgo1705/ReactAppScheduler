@@ -11,6 +11,7 @@ import Home from './src/view/Home';
 import Register from './src/view/Register';
 import RegisterSchedule from './src/view/RegisterSchedule';
 import Account from './src/view/Account';
+import UpdateSchedule from './src/view/UpdateSchedule';
 
 const Stack = createStackNavigator();
 const StackAuth = createStackNavigator();
@@ -24,6 +25,7 @@ const StackSche = () => (
       component={Home} 
     />
     <StackSchedule.Screen name="RegisterSchedule" component={RegisterSchedule} />
+    <StackSchedule.Screen name="UpdateSchedule" component={UpdateSchedule} />
   </StackSchedule.Navigator>
 );
 

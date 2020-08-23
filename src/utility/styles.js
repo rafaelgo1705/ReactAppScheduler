@@ -106,7 +106,7 @@ const styles = {
         backgroundColor: "#DDDDDD",
         minWidth: 300,
         padding: 10,
-        marginTop: 20,
+        marginVertical: 20,
         maxWidth: 400,
         borderRadius: 20,
     },
@@ -116,9 +116,14 @@ const styles = {
         backgroundColor: colors.colorRed,
         minWidth: 300,
         padding: 10,
-        marginTop: 20,
+        marginBottom: 10,
         maxWidth: 400,
         borderRadius: 20,
+    },
+
+    screenAccountButtonTextBlack: {
+        color: colors.colorBlack,
+        fontWeight: 'bold',
     },
 
     screenAccountButtonText: {

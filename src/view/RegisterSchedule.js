@@ -57,9 +57,6 @@ export default class RegisterSchedule extends React.Component {
   }
 
   return = () => {
-    /*const { navigation } = this.props.navigate;
-    navigation.state.onStateRegister({ stateRegister: true });
-    navigation.goBack();*/
     const { navigation, route } = this.props;
     navigation.goBack();
     route.params.onStateRegister({ stateRegister: true });
