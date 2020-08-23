@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, TextInput, TouchableOpacity, Image, Alert, AsyncStorage } from 'react-native';
 
 import styles from '../utility/styles';
+import { CommonActions } from '@react-navigation/native';
 
 import api from '../services/api';
 
@@ -36,7 +37,14 @@ export default class Login extends React.Component {
   }
 
   openHomeScreen = () => {
-    this.props.navigation.navigate('TabsScreen');
+    this.props.navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [
+          { name: 'TabsScreen' },
+        ],
+      })
+    );
   }
 
   openRegisterScreen = () => {

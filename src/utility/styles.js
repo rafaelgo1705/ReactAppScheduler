@@ -58,8 +58,22 @@ const styles = {
     screenHomeItemsTitle: {
         marginHorizontal: 10,
         textAlign: 'justify',
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold',
+        justifyContent: 'center'
+    },
+
+    screenHomeItemsTitleText: {
+        marginHorizontal: 10,
+        textAlign: 'justify',
+        fontSize: 14,
+        fontWeight: 'bold',
+        justifyContent: 'center'
+    },
+
+    screenHomeItemsTitleTextInfo: {
+        textAlign: 'justify',
+        fontSize: 14,
         justifyContent: 'center'
     },
 
@@ -68,7 +82,49 @@ const styles = {
         borderColor: colors.corSelecionado,
         padding: 12,
         flexDirection: 'row',
-    }
+    },
+
+    //Fim da Tela Home
+    //Tela Account
+    screenAccountItemsTitleText: {
+        marginVertical: 5,
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        justifyContent: 'center'
+    },
+
+    screenAccountItemsTitleTextInfo: {
+        marginVertical: 5,
+        textAlign: 'justify',
+        fontSize: 16,
+        justifyContent: 'center'
+    },
+
+    screenAccountButton: {
+        alignItems: "center",
+        backgroundColor: "#DDDDDD",
+        minWidth: 300,
+        padding: 10,
+        marginTop: 20,
+        maxWidth: 400,
+        borderRadius: 20,
+    },
+
+    screenAccountButtonDelete: {
+        alignItems: "center",
+        backgroundColor: colors.colorRed,
+        minWidth: 300,
+        padding: 10,
+        marginTop: 20,
+        maxWidth: 400,
+        borderRadius: 20,
+    },
+
+    screenAccountButtonText: {
+        color: colors.colorWhite,
+        fontWeight: 'bold',
+    },
 }
 
 export default styles;

@@ -11,7 +11,6 @@ import Home from './src/view/Home';
 import Register from './src/view/Register';
 import RegisterSchedule from './src/view/RegisterSchedule';
 import Account from './src/view/Account';
-import { AsyncStorage } from 'react-native';
 
 const Stack = createStackNavigator();
 const StackAuth = createStackNavigator();
@@ -36,7 +35,7 @@ const StackSig = () => (
 );
 
 const TabsScreen = () => (
-  <Tab.Navigator>
+  <Tab.Navigator initialRouteName="StackSche">
     <Tab.Screen name="StackSche" component={StackSche} options={{title:"Home"}} />
     <Tab.Screen name="Account" component={Account} options={{title:"Conta"}} />
   </Tab.Navigator>
@@ -46,6 +45,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="LoadScreen"
+          component={LoadScreen}
+          options={{
+            headerShown: false
+          }}
+        />
         <Stack.Screen
           name="StackSig"
           component={StackSig}
