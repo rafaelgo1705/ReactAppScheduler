@@ -1,7 +1,7 @@
 import colors from './colors';
 
 const styles = {
-    //Tela de Login
+    //Login Screen
     screenLogin: {
         flex: 1,
         justifyContent: 'center',
@@ -31,6 +31,34 @@ const styles = {
         borderRadius: 20,
     },
 
+    screenLoginButtonCad: {
+        alignItems: "center",
+        padding: 10,
+        marginTop: 10,
+        maxWidth: 400,
+        borderRadius: 20,
+    },
+
+    screenLoginButtonText: {
+        alignItems: "center",
+        padding: 10,
+        marginTop: 10,
+        maxWidth: 400,
+        borderRadius: 20,
+        fontWeight: 'bold'
+    },
+
+    screenLoginButtonTextSignIn: {
+        color: colors.colorBlack,
+        fontWeight: 'bold',
+    },
+
+    screenLoginButtonTextSignUp: {
+        color: colors.colorApp,
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+
     screenLoginImage: {
         width: 100,
         height: 100,
@@ -38,8 +66,8 @@ const styles = {
         alignItems: 'center',
     },
 
-    //Fim tela de Login
-    //Tela Home
+    //End Login Screen
+    //Home Screen
     screenHome: {
         flex: 1,
         justifyContent: 'center',
@@ -78,14 +106,16 @@ const styles = {
     },
 
     screenHomeItemsArray: {
-        borderBottomWidth: 0.5,
+        margin: 5,
+        borderRadius: 10,
+        borderWidth: 0.5,
         borderColor: colors.corSelecionado,
         padding: 12,
         flexDirection: 'row',
     },
 
-    //Fim da Tela Home
-    //Tela Account
+    //End Home Screen
+    //Account Screen
     screenAccountItemsTitleText: {
         marginVertical: 5,
         textAlign: 'center',
@@ -129,6 +159,17 @@ const styles = {
     screenAccountButtonText: {
         color: colors.colorWhite,
         fontWeight: 'bold',
+    },
+
+    //End Account Screen
+    //Register Screen
+
+    registerScreenButtonImg: {
+        justifyContent:"center",
+        alignItems: "center",
+        backgroundColor: 'transparent',
+        marginBottom: 10,
+        borderRadius: 20,
     },
 }
 

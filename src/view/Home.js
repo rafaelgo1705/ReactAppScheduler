@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, Image, FlatList, Alert, Modal } from 'react-native';
+import { Text, View, TouchableOpacity, Image, FlatList, AsyncStorage } from 'react-native';
 import ActionButton from 'react-native-action-button';
 
 import AwesomeAlert from 'react-native-awesome-alerts';
@@ -18,8 +18,10 @@ export default class Home extends React.Component {
       nameList: [], 
       modalVisible: false,
       showAlert: false,
+      showAlertLoad: false,
       id: null,
-      stateRegister: false
+      stateRegister: false,
+      titleAlertLoad: "",
     }
   }
       
@@ -28,30 +30,55 @@ export default class Home extends React.Component {
   }
 
   getData = async () => {
+    this.setState({
+      titleAlertLoad: "Carregando atividades...",
+      showAlertLoad: true
+    })
       this.setState({ nameList: [] })
 
       console.log(this.state.nameList.toString())
 
-      //console.log(await AsyncStorage.getItem('@token'));
-
       await api.get('/schedule')
       .then((response) => {
-        this.setState({ nameList: response.data })
+        this.setState({ 
+          nameList: response.data 
+        }, () => {
+          this.setState({
+            titleAlertLoad: "",
+            showAlertLoad: false
+          })
+        })
 
       }).catch((error) => {
-        console.log(error.message)
+        if (error.response.status === 401){
+          this.setState({
+            titleAlertLoad: "",
+            showAlertLoad: false
+          })
+          AsyncStorage.clear()
+          this.props.navigation.navigate("StackSig")
+        }
       })
       
   }
 
   deleteActivity = async () => {
+    this.setState({
+      titleAlertLoad: "Deletando atividade...",
+      showAlertLoad: true
+    })
     await api.delete('/schedule/'+this.state.id)
     .then( (response) => {
-      this.getData()
-      console.log(response.data)
+      this.setState({
+        showAlert: false
+      }, () => {
+        this.getData()
+      }) 
     })
 
     this.setState({
+      titleAlertLoad: "",
+      showAlertLoad: false,
       showAlert: false,
       name: "",
       id: null
@@ -69,6 +96,7 @@ export default class Home extends React.Component {
 
   openScreenUpdateSchedule = (item) => {
     this.props.navigation.navigate('UpdateSchedule', {
+      onStateRegister: this.onStateRegister,
       idActivity: item.id
     });
   }
@@ -99,6 +127,16 @@ export default class Home extends React.Component {
             this.deleteActivity(this.state.id)
           }}
         />
+        <AwesomeAlert
+              show={this.state.showAlertLoad}
+              showProgress={true}
+              title={this.state.titleAlertLoad}
+              closeOnTouchOutside={false}
+              closeOnHardwareBackPress={false}
+              showCancelButton={false}
+              showConfirmButton={false}
+              
+            />
         <FlatList
               data={this.state.nameList}
               renderItem={({ item }) => {
@@ -108,7 +146,7 @@ export default class Home extends React.Component {
                       () => { this.openScreenUpdateSchedule(item) }}
                     onLongPress={
                     () => {this.setState({
-                      showAlert: !this.state.showAlert,
+                      showAlert: true,
                       name: item.name,
                       id: item.id
                     })}

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import React from 'react-native';
 
 import { AsyncStorage } from 'react-native';
 
@@ -14,8 +15,6 @@ api.interceptors.request.use( async (config) => {
   try {
     const token = await AsyncStorage.getItem('@token')
 
-    console.log(token)
-
     if (token){
       config.headers.Authorization = `Bearer ${token}`
     }
@@ -23,7 +22,9 @@ api.interceptors.request.use( async (config) => {
     return config
 
   } catch (error){
-    return Promise.reject(error)
+    console.log(error)
+      return Promise.reject(error)
+    
   }
 })
 

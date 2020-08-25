@@ -1,9 +1,12 @@
 import * as React from 'react';
 
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useLinkProps } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { Ionicons } from '@expo/vector-icons';
+import colors from './src/utility/colors';
 
 import LoadScreen from './src/view/LoadScreen';
 import Login from './src/view/Login';
@@ -22,24 +25,59 @@ const StackSche = () => (
   <StackSchedule.Navigator>
     <StackSchedule.Screen 
       name="Home" 
-      component={Home} 
+      component={Home}
+      options={{
+        title: "Agenda",
+        headerTitleAlign: 'center'
+      }}
     />
-    <StackSchedule.Screen name="RegisterSchedule" component={RegisterSchedule} />
-    <StackSchedule.Screen name="UpdateSchedule" component={UpdateSchedule} />
+    <StackSchedule.Screen 
+      name="RegisterSchedule" 
+      component={RegisterSchedule} 
+      options={{
+        title: "Nova Atividade"
+        }}
+      />
+    <StackSchedule.Screen 
+      name="UpdateSchedule" 
+      component={UpdateSchedule} 
+      options={{
+        title: "Editar Atividade"
+        }}
+      />
   </StackSchedule.Navigator>
 );
 
 const StackSig = () => (
-  <StackAuth.Navigator initialRouteName="LoadScreen" headerMode="none">
+  <StackAuth.Navigator headerMode="none">
     <StackAuth.Screen name="Login" component={Login} />
     <StackAuth.Screen name="Register" component={Register} />
   </StackAuth.Navigator>
 );
 
 const TabsScreen = () => (
-  <Tab.Navigator initialRouteName="StackSche">
-    <Tab.Screen name="StackSche" component={StackSche} options={{title:"Home"}} />
-    <Tab.Screen name="Account" component={Account} options={{title:"Conta"}} />
+  <Tab.Navigator 
+    initialRouteName="StackSche" 
+    tabBarOptions={{ 
+      activeTintColor: colors.colorBlueLogin,
+      inactiveTintColor: colors.colorDisabled
+    }}
+    >
+    <Tab.Screen 
+      name="StackSche" 
+      component={StackSche} 
+      options={{
+        title:"Agenda",
+        tabBarIcon:({focused}) => (<Ionicons name="md-clipboard" size={24} color={focused ? colors.colorBlueLogin : colors.colorDisabled} />)
+      }}/>
+    <Tab.Screen 
+      name="Account" 
+      component={Account} 
+      options={{
+        title:"Conta",
+        headerTitleAlign: 'center',
+        tabBarIcon:({focused}) => (<Ionicons name="md-contact" size={24} color={focused ? colors.colorBlueLogin : colors.colorDisabled} />)
+      }} />
   </Tab.Navigator>
 );
 
@@ -65,7 +103,7 @@ export default function App() {
           name="TabsScreen"
           component={TabsScreen}
           options={{
-            title:"Home"
+            headerShown:false,
           }}
         />    
               
